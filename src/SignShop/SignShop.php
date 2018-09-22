@@ -15,6 +15,7 @@
  * @description Buy and Sell the items using Signs with virtual-money.
  * @version 3.0.0-ALPHA11
  * @api 1.11.0
+**/
 
 namespace SignShop;
 
@@ -27,6 +28,7 @@ use SignShop\Provider\SQLiteProvider;
 use SignShop\Provider\YAMLProvider;
 
 class SignShop extends PluginBase implements Listener{ 
+    
     /** @var array */
     public $temp = [];
     /** @var array */
@@ -86,7 +88,7 @@ class SignShop extends PluginBase implements Listener{
         $this->getServer()->getPluginManager()->registerEvents(new EventListener\PlayerTouchEvent($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new EventListener\PlayerBlockBreakEvent($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new EventListener\PlayerSignCreateEvent($this), $this);
-        $this->getServer()->getLogger()->info(TextFormat::GOLD."SignShop v".$this->getDescription()->getVersion()." Enabled!");
+        $this->getLogger()->info(TextFormat::GOLD."SignShop v".$this->getDescription()->getVersion()." Enabled!");
     }
     
     /**
