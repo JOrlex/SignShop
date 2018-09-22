@@ -31,7 +31,7 @@ use pocketmine\tile\Tile;
 use pocketmine\nbt\tag\Compound;
 use pocketmine\utils\TextFormat;
 
-class SignManager{
+class SignManager extends SignShop{
     private $SignShop;
     private $signs = [];    
     
