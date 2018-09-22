@@ -1,20 +1,21 @@
 <?php
 /**
- * SignShop Copyright (C) 2015 xionbig
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * @author xionbig
+* SignShop Copyright (C) 2015 xionbig
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+* 
+* @author xionbig
  * @name SignShop
- * @main SignShop\SignShop
- * @link http://xionbig.netsons.org/plugins/SignShop 
- * @link http://forums.pocketmine.net/plugins/signshop.668/
- * @description Buy and Sell the items using Signs with virtual-money.
- * @version 3.0.0-ALPHA11
- * @api 1.11.0
+* @main SignShop\SignShop
+* @link http://xionbig.netsons.org/plugins/SignShop 
+* @link http://forums.pocketmine.net/plugins/signshop.668/
+* @description Buy and Sell the items using Signs with virtual-money.
+* @version 3.0.0
+* @api 1.11.0
+**/
 
 namespace SignShop;
 
@@ -27,6 +28,7 @@ use SignShop\Provider\SQLiteProvider;
 use SignShop\Provider\YAMLProvider;
 
 class SignShop extends PluginBase implements Listener{ 
+    
     /** @var array */
     public $temp = [];
     /** @var array */
@@ -81,12 +83,12 @@ class SignShop extends PluginBase implements Listener{
         $this->manager["sign"] = new Manager\SignManager($this);
 
         $this->getServer()->getCommandMap()->register("sign", $this->manager["command"]);
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener\LevelEvent($this), $this);
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener\PlayerSpawnEvent($this), $this);
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener\PlayerTouchEvent($this), $this);
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener\PlayerBlockBreakEvent($this), $this);
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener\PlayerSignCreateEvent($this), $this);
-        $this->getServer()->getLogger()->info(TextFormat::GOLD."SignShop v".$this->getDescription()->getVersion()." Enabled!");
+        $this->getServer()->getPluginManager()->registerEvents(new SignShop\EventListener\LevelEvent($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new SignShop\EventListener\PlayerSpawnEvent($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new SignShop\EventListener\PlayerTouchEvent($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new SignShop\EventListener\PlayerBlockBreakEvent($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new SignShop\EventListener\PlayerSignCreateEvent($this), $this);
+        $this->getLogger()->info(TextFormat::GOLD. "SignShop v" . $this->getDescription()->getVersion() . " Enabled!");
     }
     
     /**
