@@ -18,4 +18,4 @@ permissions:
     default: true
     description: "Allows using all the SignShop commands"
 
-. .
+...
